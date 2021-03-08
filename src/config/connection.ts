@@ -8,7 +8,7 @@ const database = {
   database: process.env.MYSQL_DATABASE,
   username: process.env.MYSQL_USERNAME,
   password: process.env.MYSQL_PASSWORD || '',
-  logging: true,
+  logging: false,
   synchronize: true,
   entities: [Brands, Outlets, Products]
 }

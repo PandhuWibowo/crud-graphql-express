@@ -10,7 +10,7 @@ const database = {
     database: process.env.MYSQL_DATABASE,
     username: process.env.MYSQL_USERNAME,
     password: process.env.MYSQL_PASSWORD || '',
-    logging: true,
+    logging: false,
     synchronize: true,
     entities: [brands_1.Brands, outlets_1.Outlets, products_1.Products]
 };
