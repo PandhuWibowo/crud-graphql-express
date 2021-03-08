@@ -13,7 +13,8 @@ const RootQuery = new graphql_1.GraphQLObjectType({
     fields: {
         getBrands: brand_1.getBrands,
         getOutlets: outlet_1.getOutlets,
-        getProducts: product_2.getProducts
+        getProducts: product_2.getProducts,
+        getTotalProducts: product_2.getTotalProducts
     }
 });
 const Mutation = new graphql_1.GraphQLObjectType({

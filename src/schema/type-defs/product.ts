@@ -1,4 +1,4 @@
-import { GraphQLObjectType, GraphQLID, GraphQLString, GraphQLFloat } from 'graphql'
+import { GraphQLObjectType, GraphQLID, GraphQLString, GraphQLFloat, GraphQLInt } from 'graphql'
 
 export const ProductType = new GraphQLObjectType({
   name: 'Product',
@@ -10,3 +10,11 @@ export const ProductType = new GraphQLObjectType({
     price: { type: GraphQLFloat }
   })
 })
+
+export const TotalProductType = new GraphQLObjectType({
+  name: 'TotalProduct',
+  fields: () => ({
+    total: { type: GraphQLInt }
+  })
+})
+
