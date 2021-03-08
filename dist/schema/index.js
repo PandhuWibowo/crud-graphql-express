@@ -3,11 +3,14 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.schema = void 0;
 const graphql_1 = require("graphql");
 const brand_1 = require("./queries/brand");
+const outlet_1 = require("./queries/outlet");
 const brand_2 = require("./mutations/brand");
+const outlet_2 = require("./mutations/outlet");
 const RootQuery = new graphql_1.GraphQLObjectType({
     name: 'RootQuery',
     fields: {
-        getBrands: brand_1.getBrands
+        getBrands: brand_1.getBrands,
+        getOutlets: outlet_1.getOutlets
     }
 });
 const Mutation = new graphql_1.GraphQLObjectType({
@@ -15,7 +18,10 @@ const Mutation = new graphql_1.GraphQLObjectType({
     fields: {
         createBrand: brand_2.createBrand,
         deleteBrand: brand_2.deleteBrand,
-        updateBrand: brand_2.updateBrand
+        updateBrand: brand_2.updateBrand,
+        createOutlet: outlet_2.createOutlet,
+        updateOutlet: outlet_2.updateOutlet,
+        deleteOutlet: outlet_2.deleteOutlet
     }
 });
 exports.schema = new graphql_1.GraphQLSchema({

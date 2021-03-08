@@ -1,11 +1,18 @@
-import { GraphQLID, GraphQLString } from "graphql";
+import { GraphQLID, GraphQLObjectType, GraphQLScalarType, GraphQLString } from "graphql";
 import { BrandType } from "../type-defs/brand";
 import { MessageType } from '../type-defs/message'
 import {Brands} from '../../entities/brands'
 
 // Create new brand
 export const createBrand = {
-  type: BrandType,
+  type: new GraphQLObjectType({
+    name: 'MessageCreateBrand',
+    fields: () => ({
+      response: { type: GraphQLString },
+      message: { type: GraphQLString },
+      name: { type: GraphQLString }
+    })
+  }),
   args: {
     name: { type: GraphQLString },
     logo: { type: GraphQLString },
@@ -21,7 +28,7 @@ export const createBrand = {
       await Brands.insert({
         name, logo, banner
       })
-      return args
+      return { response: 'OK', message: `Brand of ${name} successfully created`, name: name}
     } catch (error) {
       console.error(error)
       throw new Error(error)

@@ -1,4 +1,5 @@
-import { BaseEntity, Column, Entity, OneToMany, PrimaryGeneratedColumn } from "typeorm";
+import { BaseEntity, Column, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
+import { Brands } from "./brands";
 
 @Entity()
 export class Outlets extends BaseEntity {
@@ -14,9 +15,13 @@ export class Outlets extends BaseEntity {
   @Column()
   address!: string
 
-  @Column("decimal")
+  @Column({ type: "float", precision: 10, scale: 6 })
   longitude!: number
 
-  @Column("decimal")
+  @Column({ type: "float", precision: 10, scale: 6 })
   latitude!: number
+
+  @ManyToOne(() => Brands, (brand: Brands) => brand.brand_id)
+  @JoinColumn({ name: 'brand_id' })
+  public brand_id!: Brands;
 }

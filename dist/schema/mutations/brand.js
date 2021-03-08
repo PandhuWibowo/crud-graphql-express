@@ -11,12 +11,18 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.deleteBrand = exports.updateBrand = exports.createBrand = void 0;
 const graphql_1 = require("graphql");
-const brand_1 = require("../type-defs/brand");
 const message_1 = require("../type-defs/message");
 const brands_1 = require("../../entities/brands");
 // Create new brand
 exports.createBrand = {
-    type: brand_1.BrandType,
+    type: new graphql_1.GraphQLObjectType({
+        name: 'MessageCreateBrand',
+        fields: () => ({
+            response: { type: graphql_1.GraphQLString },
+            message: { type: graphql_1.GraphQLString },
+            name: { type: graphql_1.GraphQLString }
+        })
+    }),
     args: {
         name: { type: graphql_1.GraphQLString },
         logo: { type: graphql_1.GraphQLString },
@@ -34,7 +40,7 @@ exports.createBrand = {
                 yield brands_1.Brands.insert({
                     name, logo, banner
                 });
-                return args;
+                return { response: 'OK', message: `Brand of ${name} successfully created`, name: name };
             }
             catch (error) {
                 console.error(error);
