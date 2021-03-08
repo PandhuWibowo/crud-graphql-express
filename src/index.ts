@@ -3,19 +3,10 @@ const {graphqlHTTP} = require('express-graphql')
 import {schema} from './schema'
 import cors from 'cors'
 import { createConnection } from 'typeorm'
-import { Brands } from './entities/brands'
-import { Outlets } from './entities/outlets'
+const connection = require('./config/connection')
 
 const main = async () => {
-  await createConnection({
-    type: 'mysql',
-    database: 'db_crud_graphql',
-    username: 'root',
-    password: '',
-    logging: true,
-    synchronize: true,
-    entities: [Brands, Outlets]
-  })
+  await createConnection(connection.database)
   const app = express()
   app.use(cors())
   app.use(express.json())

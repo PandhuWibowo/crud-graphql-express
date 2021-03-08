@@ -3,12 +3,15 @@ import { getBrands } from './queries/brand'
 import { getOutlets } from './queries/outlet'
 import { createBrand, deleteBrand, updateBrand } from './mutations/brand'
 import { createOutlet, updateOutlet, deleteOutlet } from './mutations/outlet'
+import { createProduct, updateProduct, deleteProduct } from './mutations/product'
+import { getProducts } from './queries/product'
 
 const RootQuery = new GraphQLObjectType({
   name: 'RootQuery',
   fields: {
     getBrands,
-    getOutlets
+    getOutlets,
+    getProducts
   }
 })
 
@@ -20,7 +23,10 @@ const Mutation = new GraphQLObjectType({
     updateBrand,
     createOutlet,
     updateOutlet,
-    deleteOutlet
+    deleteOutlet,
+    createProduct,
+    updateProduct,
+    deleteProduct
   }
 })
 

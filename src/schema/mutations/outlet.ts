@@ -1,7 +1,6 @@
 import { GraphQLFloat, GraphQLID, GraphQLString } from "graphql";
 import { MessageType } from '../type-defs/message'
 import {Brands} from '../../entities/brands'
-import { OutletType } from "../type-defs/outlet";
 import { Outlets } from "../../entities/outlets";
 
 // Create new outlet

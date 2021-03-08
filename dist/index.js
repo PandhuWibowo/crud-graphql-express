@@ -17,18 +17,9 @@ const { graphqlHTTP } = require('express-graphql');
 const schema_1 = require("./schema");
 const cors_1 = __importDefault(require("cors"));
 const typeorm_1 = require("typeorm");
-const brands_1 = require("./entities/brands");
-const outlets_1 = require("./entities/outlets");
+const connection = require('./config/connection');
 const main = () => __awaiter(void 0, void 0, void 0, function* () {
-    yield typeorm_1.createConnection({
-        type: 'mysql',
-        database: 'db_crud_graphql',
-        username: 'root',
-        password: '',
-        logging: true,
-        synchronize: true,
-        entities: [brands_1.Brands, outlets_1.Outlets]
-    });
+    yield typeorm_1.createConnection(connection.database);
     const app = express();
     app.use(cors_1.default());
     app.use(express.json());
